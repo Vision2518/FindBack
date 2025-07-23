@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FindBack is a smart lost and found system that helps users report and retrieve lost items easily and securely." />
   <title>FindBack - Smart Lost and Found System</title>
   <style>
     body {
@@ -41,6 +42,7 @@
       background: #444;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 30px;
       padding: 15px 0;
     }
@@ -51,8 +53,10 @@
       font-weight: bold;
     }
 
-    nav a:hover {
+    nav a:hover,
+    nav a.active {
       text-decoration: underline;
+      color: #ffd700;
     }
 
     main {
@@ -121,6 +125,23 @@
       margin-top: 40px;
       font-size: 0.9em;
     }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .btn {
+        width: 90%;
+        box-sizing: border-box;
+      }
+
+      .features-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -131,12 +152,12 @@
     <p class="tagline">A smarter way to find your lost things.</p>
   </header>
 
-  <nav>
-    <a href="homepage.html">Home</a>
+  <nav aria-label="Main Navigation">
+    <a href="homepage.html" class="active">Home</a>
     <a href="lost_report.html">Report Lost</a>
     <a href="found_report.html">Report Found</a>
-    <a href="#">Search</a>
-    <a href="#">Contact Us</a>
+    <a href="#" title="Coming soon">Search</a>
+    <a href="#" title="Coming soon">Contact Us</a>
     <a href="admin_login.html">Admin</a>
   </nav>
 
