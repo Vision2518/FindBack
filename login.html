@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Login</title>
+        <h1>Please Login </h1>
+    </head>
+    <body>
+        <nav>
+                <a href="test.html">Home</a>
+                <a href="">Report Lost</a>
+                <a href="">Report Found</a>
+                <a href="">Search</a>
+                <a href="">Login</a>
+            </nav>
+        <form action="lost.php" method="POST">
+            <label for="name">Username</label>
+            <br>
+            <input type="text" id="username" name="uname" required><br>
+           <label for="name">Create Password</label> 
+        <br><input type="text" id="password" name="password" required><br>    
+        <!--   <label for="name">Mobile Number:</label>
+            <br><br>
+            <input type="text" id="phone" name="phone" required><br>
+            <button name="otp" id="otp btn">Send Otp</button>
+            <br>
+            <label for="name">Enter Otp:</label><br>
+            <input type="text" name="otp" id="otp" required>-->
+            <button name="submit">Register</button>
+            <p>Already user!</p><br>
+            <button type="login" name="login">Login</button>
+        </form>
+    </body>
+</html>
