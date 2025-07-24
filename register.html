@@ -1,7 +1,7 @@
 <html>
     <head>
-        <title>Login</title>
-        <h1>Please Login </h1>
+        <title>Register-FindBack</title>
+        <h1>Register for FindBack </h1>
     </head>
     <body>
         <nav>
@@ -11,12 +11,14 @@
                 <a href="">Search</a>
                 <a href="">Login</a>
             </nav>
-        <form action="lost.php" method="POST">
-            <label for="name">Username</label>
+        <form action="register.php" method="POST">
+            <label for="name">Full Name</label>
             <br>
-            <input type="text" id="username" name="uname" required><br>
-           <label for="name">Create Password</label> 
-        <br><input type="text" id="password" name="password" required><br>    
+            <input type="text" id="name" name="uname" required><br>
+           <label for="email">Email:</label> 
+        <br><input type="text" id="email" name="email" required><br>  
+        <label for="password">Password:</label>
+        <input  type="password" name="password" id="password" required><br><br> 
         <!--   <label for="name">Mobile Number:</label>
             <br><br>
             <input type="text" id="phone" name="phone" required><br>
@@ -24,8 +26,8 @@
             <br>
             <label for="name">Enter Otp:</label><br>
             <input type="text" name="otp" id="otp" required>-->
-            <button name="submit">Register</button>
-            <p>Already user!</p><br>
+            <button type="submit" >Register</button>
+            <p>Already have an account?<a href="login.html">Login here</a></p><br>
             <button type="login" name="login">Login</button>
         </form>
     </body>

@@ -1,5 +1,0 @@
-name:nid card|date:2082-03-08|location:nepalgunj|description:i lost nid card|phone:9848123233
-name:hh|date:ffd|location:fdf|description:fef|phone:gt
-name:hh|date:ffd|location:fdf|description:fef|phone:gt
-name:hh|date:tt90|location:ttkpl|description:rf|phone:kk
-name:id card|date:tt90|location:ttkpl|description:rrrr|phone:tt

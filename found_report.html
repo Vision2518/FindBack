@@ -115,7 +115,7 @@
   <nav>
     <a href="homepage.html">Home</a>
     <a href="lost_report.html">Report Lost</a>
-    <a href="report_found.html">Report Found</a>
+    <a href="found_report.html">Report Found</a>
     <a href="#">Search</a>
     <a href="#">Contact Us</a>
     <a href="admin_login.html">Admin</a>
@@ -124,6 +124,8 @@
   <main>
     <h1>Report Found Item</h1>
     <form action="found.php" method="POST" enctype="multipart/form-data">
+       <label>Reporter Name:</label>
+      <input type="text" id="reporter name" name ="name" required>
       <label for="item_name">Item Name:</label>
       <input type="text" id="item_name" name="item_name" required>
 
