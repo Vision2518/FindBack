@@ -3,20 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FindBack is a smart lost and found system that helps users report and retrieve lost items easily and securely." />
+  <meta name="theme-color" content="#000000" />
   <title>FindBack - Smart Lost and Found System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #404147, #2b2c2e);
+      color: #fff;
     }
 
     header {
-      background: #222;
+      background:#000 ;
       color: #fff;
       text-align: center;
       padding: 40px 20px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
     header h1 {
@@ -26,101 +30,185 @@
 
     header h2 {
       margin: 10px 0;
-      font-weight: normal;
+      font-weight: bold;
       font-size: 1.5em;
-      color: #ddd;
+      color: #fff;
     }
 
     header p.tagline {
-      margin: 15px 0 0;
-      font-size: 1.2em;
-      color: #aaa;
+      margin: 4px 0 0;
+      font-size:0.9em;
+      color: #fff;
+      font-weight: bold;
     }
 
     nav {
-      background: #444;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      margin: 20px auto;
+      max-width: 90%;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 30px;
       padding: 15px 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
 
     nav a {
       color: #fff;
       text-decoration: none;
       font-weight: bold;
+      font-size: 1em;
+      transition: 0.3s ease;
     }
 
-    nav a:hover {
+    nav a:hover,
+    nav a.active {
       text-decoration: underline;
+      color: yellow;
     }
 
-    main {
+    .digital-board {
+      background: #000;
+      margin: 30px auto;
+      padding: 40px 10px;
+      max-width: 650px;
+      height: 130px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 20px #ff000033;
+    }
+
+    .digital-text {
+      position: absolute;
+      opacity: 0;
+      font-size: 1.4em;
+      font-weight: bold;
+      color: red;
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    @keyframes bounceInSlow {
+      0%   { transform: scale(0.5); opacity: 0; }
+      50%  { transform: scale(1.2); opacity: 1; }
+      70%  { transform: scale(0.9); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      0% { transform: translateX(100%); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
+    .btn-container {
       text-align: center;
-      padding: 40px 20px;
-    }
-
-    main h2 {
       margin-top: 30px;
-      font-size: 1.8em;
-    }
-
-    main p {
-      font-size: 1.1em;
-      max-width: 600px;
-      margin: 10px auto 30px;
-      line-height: 1.5;
     }
 
     .btn {
-      display: inline-block;
-      background: #222;
+      background: rgba(255,255,255,0.1);
       color: #fff;
-      text-decoration: none;
-      padding: 12px 30px;
-      margin: 10px;
-      border-radius: 5px;
       font-weight: bold;
-      transition: background 0.3s ease;
+      padding: 12px 30px;
+      border-radius: 8px;
+      border: none;
+      margin: 10px;
+      font-size: 1em;
+      text-decoration: none;
+      transition: 0.3s ease;
     }
 
     .btn:hover {
-      background: #555;
+      background: #111;
+      transform: scale(1.05);
     }
 
     .features {
-      margin-top: 60px;
+      text-align: center;
+      margin-top: 50px;
     }
 
     .features h2 {
-      font-size: 1.8em;
+      font-size: 2em;
       margin-bottom: 20px;
     }
 
     .features-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+     
+     @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr); /* Tablet = 2 per row */
+    }
+    }
+
+     @media (max-width: 480px) {
+    .features-grid {
+     grid-template-columns: 1fr; /* Mobile = 1 per row */
+    }
+    }
+
+    .features-grid div i {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      color: white;
     }
 
     .features-grid div {
-      background: #eee;
-      padding: 20px 30px;
-      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 10px;
       font-weight: bold;
-      min-width: 160px;
-      box-shadow: 1px 1px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .features-grid div.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     footer {
-      background: #222;
-      color: #aaa;
+      background: #000;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+      padding: 20px 0;
       font-size: 0.9em;
+      color: #ccc;
+      margin-top: 50px;
     }
+   
+    @keyframes pulseText {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.85; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.btn span {
+  display: inline-block;
+  animation: pulseText 1.8s ease-in-out infinite;
+}
+
   </style>
 </head>
 <body>
@@ -131,8 +219,8 @@
     <p class="tagline">A smarter way to find your lost things.</p>
   </header>
 
-  <nav>
-    <a href="homepage.html">Home</a>
+  <nav aria-label="Main Navigation">
+    <a href="homepage.html" class="active">Home</a>
     <a href="lost_report.html">Report Lost</a>
     <a href="found_report.html">Report Found</a>
     <a href="#">Search</a>
@@ -140,33 +228,84 @@
     <a href="admin_login.html">Admin</a>
   </nav>
 
-  <main>
-    <h2>Lost Something?</h2>
-    <p>Report your lost item here and let FindBack help you get it back quickly and securely.</p>
+  <div class="digital-board">
+    <div class="digital-text" id="text1" aria-live="polite">Lost item?</div>
+    <div class="digital-text" id="text2" aria-live="polite">Report your lost items now.</div>
+    <div class="digital-text" id="text3" aria-live="polite">Found item?</div>
+    <div class="digital-text" id="text4" aria-live="polite">Submit a found item and help others.</div>
+  </div>
 
-    <h2>Found Something?</h2>
-    <p>Submit a found item report and help it return to its rightful owner easily.</p>
+  <div class="btn-container">
+    <a href="lost_report.html" class="btn"><span>Report Lost</span></a>
+    <a href="found_report.html" class="btn"><span>Report Found</span></a>
+ </div>
 
-    <div>
-      <a href="lost_report.html" class="btn">Report Lost</a>
-      <a href="found_report.html" class="btn">Report Found</a>
+
+  <section class="features">
+    <h2>Why FindBack?</h2>
+    <div class="features-grid">
+      <div><i class="fas fa-key"></i><br>OTP Verification</div>
+      <div><i class="fas fa-bell"></i><br>Real-Time Notifications</div>
+      <div><i class="fas fa-lock"></i><br>Secure Claims</div>
+      <div><i class="fas fa-search"></i><br>Smart Search</div>
+      <div><i class="fas fa-exclamation-circle"></i><br>Review Alerts</div>
+      <div><i class="fas fa-lightbulb"></i><br>Item Match Suggestions</div>
+      <div><i class="fas fa-user-secret"></i><br>Anonymous Reporting</div>
+      <div><i class="fas fa-id-card"></i><br>Verified Ownership Proof</div>
     </div>
-
-    <section class="features">
-      <h2>Why FindBack?</h2>
-      <div class="features-grid">
-        <div>OTP Verification</div>
-        <div>Real-Time Notifications</div>
-        <div>Secure Claims</div>
-        <div>Smart Search</div>
-        <div>Review Alerts</div>
-      </div>
-    </section>
-  </main>
+  </section>
 
   <footer>
     &copy; 2025 FindBack | Powered by Prem &amp; Vision
   </footer>
 
+  <script>
+    // Digital Text Animation
+    const animations = [
+      { id: 'text1', animation: 'bounceInSlow', duration: 2000, nextDelay: 2500 },
+      { id: 'text2', animation: 'slideIn', duration: 2000, nextDelay: 2500 },
+      { id: 'text3', animation: 'bounceInSlow', duration: 2000, nextDelay: 2500 },
+      { id: 'text4', animation: 'slideIn', duration: 2000, nextDelay: 2500 }
+    ];
+
+    let current = 0;
+
+    function resetAll() {
+      animations.forEach(item => {
+        const el = document.getElementById(item.id);
+        el.style.opacity = 0;
+        el.style.animation = 'none';
+        el.offsetHeight;
+      });
+    }
+
+    function showNext() {
+      resetAll();
+      const item = animations[current];
+      const el = document.getElementById(item.id);
+      el.style.animation = `${item.animation} ${item.duration}ms ease forwards`;
+
+      setTimeout(() => {
+        el.style.animation = `fadeOut 1000ms ease forwards`;
+      }, item.duration + 1000);
+
+      current = (current + 1) % animations.length;
+      setTimeout(showNext, item.duration + 1000 + item.nextDelay);
+    }
+
+    showNext();
+
+    // Feature Cards Scroll Animation
+    const fCards = document.querySelectorAll('.features-grid div');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    fCards.forEach(card => observer.observe(card));
+  </script>
 </body>
 </html>
