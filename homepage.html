@@ -8,12 +8,14 @@
   <title>FindBack - Smart Lost and Found System</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #404147, #2b2c2e);
-      color: #fff;
-    }
+  body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #121212;
+  color: white;
+}
+
+
 
     header {
       background:#000 ;
@@ -68,8 +70,9 @@
 
     nav a:hover,
     nav a.active {
-      text-decoration: underline;
-      color: yellow;
+      text-decoration: none;
+        color: #00bcd4;
+
     }
 
     .digital-board {
@@ -84,7 +87,7 @@
       justify-content: center;
       overflow: hidden;
       position: relative;
-      box-shadow: 0 0 20px #ff000033;
+     box-shadow: 0 0 20px rgba(0, 188, 212, 0.3);
     }
 
     .digital-text {
@@ -117,24 +120,25 @@
       text-align: center;
       margin-top: 30px;
     }
-
     .btn {
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-      font-weight: bold;
-      padding: 12px 30px;
-      border-radius: 8px;
-      border: none;
-      margin: 10px;
-      font-size: 1em;
-      text-decoration: none;
-      transition: 0.3s ease;
-    }
+  background-color: #00bcd4;
+  color: black;
+  font-weight: bold;
+  padding: 12px 30px;
+  border-radius: 8px;
+  border: none;
+  margin: 10px;
+  font-size: 1em;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+}
 
-    .btn:hover {
-      background: #111;
-      transform: scale(1.05);
-    }
+.btn:hover {
+  background-color: #0097a7;
+  transform: scale(1.05);
+}
+
 
     .features {
       text-align: center;
@@ -214,7 +218,7 @@
 <body>
 
   <header>
-    <h1>🔍 FindBack</h1>
+    <h1> <i class="fas fa-search" style="color: white; margin-right: 10px;"></i> FindBack</h1>
     <h2>Smart Lost and Found System</h2>
     <p class="tagline">A smarter way to find your lost things.</p>
   </header>
@@ -223,8 +227,8 @@
     <a href="homepage.html" class="active">Home</a>
     <a href="lost_report.html">Report Lost</a>
     <a href="found_report.html">Report Found</a>
-    <a href="#">Search</a>
-    <a href="#">Contact Us</a>
+    <a href="contact.html">Search</a>
+    <a href="#">Contact</a>
     <a href="admin_login.html">Admin</a>
   </nav>
 

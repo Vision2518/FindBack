@@ -13,32 +13,6 @@
       color: white;
     }
 
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 15px 40px;
-      background-color: #1f1f1f;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      margin-left: 30px;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    .navbar a:hover {
-      color: #00bcd4;
-    }
-
-    /* Hero Section */
     .hero {
       text-align: center;
       padding: 60px 20px 40px;
@@ -48,6 +22,16 @@
     .hero h1 {
       font-size: 3em;
       margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .hero h1 svg {
+      width: 36px;
+      height: 36px;
+      fill: white;
     }
 
     .hero p {
@@ -55,7 +39,6 @@
       color: #ccc;
     }
 
-    /* Contact Form */
     .contact-container {
       max-width: 600px;
       margin: 40px auto;
@@ -108,16 +91,15 @@
       background-color: #0097a7;
     }
 
-    /* Footer */
     footer {
       text-align: center;
-      padding: 25px;
-      background-color: #1f1f1f;
+      padding: 20px;
+      background: #0d0d0d;
+      color: white;
       margin-top: 50px;
-      color: #888;
+      font-family: 'Segoe UI', sans-serif;
     }
 
-    /* Animations */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -131,22 +113,17 @@
 </head>
 <body>
 
-  <!-- Navbar without 'FindBack' on left -->
-  <div class="navbar">
-    <a href="homepage.html">Home</a>
-    <a href="report-lost.html">Report Lost</a>
-    <a href="report-found.html">Report Found</a>
-    <a href="search.html">Search</a>
-    <a href="contact.html">Contact</a>
-  </div>
-
-  <!-- Hero Section -->
   <div class="hero">
-    <h1>Contact Us</h1>
+    <h1>
+      <!-- Modern white phone icon using SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.06-.24 11.36 11.36 0 003.58.57 1 1 0 011 1v3.61a1 1 0 01-.91 1 19.05 19.05 0 01-8.29-2.45 18.71 18.71 0 01-5.7-5.7A19.05 19.05 0 013 4.34a1 1 0 011-1h3.61a1 1 0 011 1 11.36 11.36 0 00.57 3.58 1 1 0 01-.24 1.06z"/>
+      </svg>
+      Contact Us
+    </h1>
     <p>If you have any questions, issues, or suggestions, we’d love to hear from you.</p>
   </div>
 
-  <!-- Contact Form -->
   <div class="contact-container">
     <h2>Send us a message</h2>
     <form>
@@ -163,7 +140,6 @@
     </form>
   </div>
 
-  <!-- Footer -->
   <footer>
     &copy; 2025 FindBack. All rights reserved.
   </footer>

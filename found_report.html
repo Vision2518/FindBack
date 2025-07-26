@@ -4,26 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FindBack - Report Found</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: rgb(106, 100, 100);
-      color: #333;
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: white;
     }
 
     main {
-      max-width: 450px;
-      margin: 20px auto;
-      padding: 20px 30px;
-      background-color: rgb(73, 67, 67);
-      border-radius: 40px;
-      box-shadow: 1px 1px 6px rgba(23, 20, 20, 0.1);
+      max-width: 480px;
+      margin: 40px auto;
+      padding: 25px;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 188, 212, 0.2); /* blue glow */
     }
 
     main h1 {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       font-size: 1.8em;
       color: white;
       font-weight: bold;
@@ -37,21 +41,30 @@
     }
 
     form input[type="text"],
+    form input[type="date"],
     form input[type="file"],
     form textarea {
       width: 100%;
-      padding: 8px;
+      padding: 9px;
       margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
+      background: #2c2c2c;
+      border: none;
+      border-radius: 5px;
+      color: white;
       font-size: 1em;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
     }
 
-    form input[type="text"],
-    form textarea {
-      color: black;
+    form input:focus,
+    form textarea:focus {
+      outline: none;
+      background: #333;
+    }
+
+    /* Placeholder style - white with some transparency */
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(255, 255, 255, 0.7);
       font-weight: normal;
     }
 
@@ -64,48 +77,70 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 20px;
+      margin-top: 25px;
     }
 
     .btn-back,
     .btn-submit {
-      background-color: #534e4e;
-      color: #fff;
+      background-color: #00bcd4;
+      color: black;
       border: none;
       padding: 10px 20px;
       border-radius: 5px;
       font-weight: bold;
       cursor: pointer;
       font-size: 16px;
-      font-family: Arial, sans-serif;
       transition: background-color 0.3s ease;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     .btn-back:hover,
     .btn-submit:hover {
-      background-color: black;
+      background-color: #0097a7;
     }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0d0d0d;
+      color: white;
+      margin-top: 50px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    @keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+main {
+  animation: fadeIn 1s ease-in-out;
+}
+
   </style>
 </head>
 <body>
-
+  <h1 style="text-align: center; margin-top: 40px; margin-bottom: 10px; color: white; font-weight: bold;">
+    <i class="fa-solid fa-handshake-angle" style="color: white; margin-right: 10px; font-size: 1.5em;"></i>
+    Report Found Item
+  </h1>
+  <p style="text-align: center; color: rgba(255, 255, 255, 0.8); font-size: 1.1em; margin-top: 0; margin-bottom: 30px;">
+    Please fill out the form carefully to report the found item. The more details you provide, the higher the chances to reunite it with the owner.
+  </p>
   <main>
-    <h1>Report Found Item</h1>
     <form action="found.php" method="POST" enctype="multipart/form-data">
       <label for="item_name">Item Name:</label>
-      <input type="text" id="item_name" name="item_name" required>
+      <input type="text" id="item_name" name="item_name" placeholder="Enter item name" required>
 
       <label for="item_description">Item Description:</label>
-      <textarea id="item_description" name="item_description" rows="2" required></textarea>
+      <textarea id="item_description" name="item_description" rows="2" placeholder="Describe the item" required></textarea>
 
       <label for="nepaliDate">Date Found (BS):</label>
-      <input type="text" id="nepaliDate" name="found_date" required>
+      <input type="date" id="nepaliDate" name="found_date" placeholder="Select found date" required>
 
       <label for="location">Location:</label>
-      <input type="text" id="location" name="location" required>
+      <input type="text" id="location" name="location" placeholder="Enter location" required>
 
       <label for="contact_info">Contact Info:</label>
-      <input type="text" id="contact_info" name="contact_info" required>
+      <input type="text" id="contact_info" name="contact_info" placeholder="Enter contact details" required>
 
       <label for="photo">Upload Photo (optional):</label>
       <input type="file" id="photo" name="photo">
@@ -116,6 +151,8 @@
       </div>
     </form>
   </main>
-
+  <footer>
+    &copy; 2025 FindBack. All rights reserved.
+  </footer>
 </body>
 </html>
