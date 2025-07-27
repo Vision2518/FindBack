@@ -1,21 +1,27 @@
 
 <?php
+include 'db_connect.php';
 if ($_SERVER["REQUEST_METHOD"]=="POST")
 {
+        $name=$_POST["name"];
      $item=$_POST["item_name"];
      $date=$_POST["found_date"];
     $desc=$_POST["item_description"];
         $phone=$_POST["contact_info"];
         $location=$_POST["location"];
-        $line="Item name:".$item."|Found date:".$date."|Location:".$location."|Description:".$desc."|Contact Info:".$phone."\n";
-        $file=fopen("found_items.txt","a");
-        fwrite($file,$line);
-        fclose($file);
-        echo"Thank You For Reporting!";
+      $sql="INSERT INTO found_items (item_name,description,location,reporter_name,reporter_contact) VALUES ('$item','$desc','$location','$name','$phone')";
+     if($conn->query($sql)===TRUE)
+     {
+          echo"Thank You For Reporting!";
         echo "<h3>Founded item reported sucessfully!</h3>";
-        echo "<a href='found_report.html'>Report Another</a>";
-        echo "<a href='homepage.html'>Go Home</a>";
+         echo "<a href='report_lost.php'><button>➕ Report Another</a>";
+        echo "<a href='homepage.html'><button>🏠 Go Home</button></a>";
+     }
+     else
+     {
+        echo "Error:".$sql."<br>".$conn->error;
+     }
 }
-        else{
-        echo "Invaid Request!"; }
+     else
+        echo "Invaid Request!";
 ?>
