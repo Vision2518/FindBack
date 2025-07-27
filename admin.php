@@ -1,25 +1,37 @@
 <?php
 session_start();
-$admin_user="admin";
-$admin_pass="1234";
-if ($_SERVER["REQUEST_METHOD"]=="POST")
-    {
-        $user=$_POST['username'];
-        $pass=$_POST['password'];
-        if($user===$admin_user&&$pass===$admin_pass)
-            {
-                $_SESSION['loggedin']=true;
-                header("location:view_reports.php");
+include 'db_connect.php'; // DB connection
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = $_POST['password'];
+
+    $sql = "SELECT * FROM users WHERE email = '$username' OR name = '$username'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
+
+        if (password_verify($password, $row['Password'])) {
+            if ($row['role'] === 'admin') {
+                $_SESSION['loggedin'] = true;
+                $_SESSION['user_id'] = $row['id'];
+                $_SESSION['user_name'] = $row['name'];
+                $_SESSION['role'] = 'admin';
+
+                header("Location: admin_panel.php");
                 exit();
-                }
-        else
-            {
-                echo "Invalid username or password.";
-                }
+            } else {
+                echo "Access denied. You are not an admin.";
+            }
+        } else {
+            echo "Incorrect password.";
         }
-    else
-    {
-    header("location:admin_login.html");
-exit();
+    } else {
+        echo "Admin account not found.";
     }
+} else {
+    header("Location: admin_login.html");
+    exit();
+}
 ?>

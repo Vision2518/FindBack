@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     $desc=$_POST["item_description"];
         $phone=$_POST["contact_info"];
         $location=$_POST["location"];
-      $sql="INSERT INTO found_items (item_name,description,location,reporter_name,reporter_contact) VALUES ('$item','$desc','$location','$name','$phone')";
+      $sql="INSERT INTO found_items (item_name,description,date_found,location,reporter_name,reporter_contact) VALUES ('$item','$desc','$date_found',$location','$name','$phone')";
      if($conn->query($sql)===TRUE)
      {
           echo"Thank You For Reporting!";

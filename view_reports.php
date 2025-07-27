@@ -1,128 +1,65 @@
 <?php
 session_start();
-if (!isset($_SESSION['loggedin'])) {
-  header("Location: admin_login.html");
-  exit();
+if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['admin', 'moderator'])) {
+    die("Access denied.");
 }
+
+include 'db_connect.php';
+$sql="SELECT*FROM lost_items";
+$lost=mysqli_query($conn, $sql);
+$sql1="SELECT *FROM found_items";
+$found=mysqli_query($conn, $sql1)
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Admin Panel - FindBack</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      color: #333;
-      display: flex;
-      height: 100vh;
-    }
-
-    aside {
-      width: 220px;
-      background: #222;
-      color: #fff;
-      padding: 20px;
-    }
-
-    aside h1 {
-      font-size: 1.5em;
-      margin: 0 0 20px 0;
-    }
-
-    aside nav {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    aside nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    aside nav a:hover {
-      text-decoration: underline;
-    }
-
-    main {
-      flex-grow: 1;
-      padding: 30px;
-      overflow-y: auto;
-    }
-
-    main h2 {
-      border-bottom: 2px solid #333;
-      padding-bottom: 5px;
-      margin-top: 40px;
-    }
-
-    .report {
-      background: #fff;
-      border: 1px solid #ddd;
-      padding: 15px;
-      margin: 15px 0;
-      border-radius: 5px;
-      box-shadow: 1px 1px 5px rgba(0,0,0,0.05);
-      white-space: pre-line;
-    }
-
-    .no-reports {
-      color: #888;
-      font-style: italic;
-    }
-  </style>
+  <title>View Reports - FindBack</title>
+    <link rel="stylesheet" href="test.css" />
 </head>
 <body>
 
-  <aside>
-    <h1>🔒 Admin</h1>
-    <nav>
-      <a href="view_reports.php">View Reports</a>
-      <a href="logout.php">Log Out</a>
-    </nav>
-  </aside>
-
+   <aside>
+        <a href="admin_panel.php" class="active">Dashboard</a>
+        <a href="view_reports.php">View Reports</a>
+        <a href="manage_users.php">Manage Users</a>
+        <a href="reward_system.php">Reward System</a>
+        <a href="logout.php">Logout</a>
+</aside>
   <main>
-    <h2>Lost Reports</h2>
+    <h1>Lost Item Reports</h1>
     <?php
-    $file = fopen("lost_items.txt", "r");
-    if ($file) {
-      $found = false;
-      while (($line = fgets($file)) !== false) {
-        $found = true;
-        echo '<div class="report">' . htmlspecialchars($line) . '</div>';
-      }
-      fclose($file);
-      if (!$found) {
-        echo '<p class="no-reports">No lost reports found.</p>';
-      }
-    } else {
-      echo '<p class="no-reports">No lost reports found.</p>';
+   if(mysqli_num_rows($lost)>0)
+   {
+    echo "<table border='1'><tr><th>ID</th><th>Item Name</th><th>Description</th><th>Date Lost</th><th>Report Time</th></tr>";
+    while($row=mysqli_fetch_assoc ($lost))
+    {
+      echo "<tr><td>".$row['id']."</td><td>".$row['item_name']."</td><td>".$row['description']."</td><td>".$row['date_lost']."</td><td>".$row['created_at']."</td></tr>";
+    }echo "</table>";
+   }
+   else{
+    echo "<p>No lost items found</p>";
+   }
+    ?>
+    <br><br>
+    <h1>Found Item Reports</h1>
+    <?php
+    if(mysqli_num_rows($found)>0)
+    {
+      echo "<table border='1'><tr><th>ID</th><th>Item Name</th><th>Description</th><th>Date Found</th><th>Found Location</th><th>Reported Time</th>";
+      while($row=mysqli_fetch_assoc($found))
+      {
+        echo "<tr><td>".$row['id']."</td><td>".$row['item_name']."</td><td>".$row['description']."</td><td>".$row['date_found']."</td><td>".$row['location']."</td><td>".$row['created_at']."</td></tr>";
+      }echo "</table>";
+    }
+    else
+    {
+      echo"<p>No found items available</p>";
     }
     ?>
 
-    <h2>Found Reports</h2>
-    <?php
-    $file = fopen("found_items.txt", "r");
-    if ($file) {
-      $found = false;
-      while (($line = fgets($file)) !== false) {
-        $found = true;
-        echo '<div class="report">' . htmlspecialchars($line) . '</div>';
-      }
-      fclose($file);
-      if (!$found) {
-        echo '<p class="no-reports">No found reports found.</p>';
-      }
-    } else {
-      echo '<p class="no-reports">No found reports found.</p>';
-    }
-    ?>
+   
   </main>
 
 </body>

@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
        {
         $last_id=$conn->insert_id;
         echo"<h3>Lost item reported sucessfully!</h3>";
-        echo"<a href='declare_reward.php?id=$last_id'>
+        echo"<a href='cony.php?id=$last_id'>
         <button>🎁Declare Reward(Optional)</button>
         </a><br><br>";
        
