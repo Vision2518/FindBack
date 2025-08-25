@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'user') {
+    $username = htmlspecialchars($_SESSION['user_name']);
+    echo '
+    <div style="position: fixed; top: 10px; right: 20px; font-family: Arial, sans-serif;">
+        <a href="user_dashboard.php" style="text-decoration: none; color: #333; display: flex; align-items: center; font-weight: 600;">
+            <span style="font-size: 20px; margin-right: 6px;">👤</span>
+            <span>Hey, ' . $username . '</span>
+        </a>
+    </div>
+    ';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -227,14 +243,10 @@
     <a href="homepage.html" class="active">Home</a>
     <a href="lost_report.html">Report Lost</a>
     <a href="found_report.html">Report Found</a>
-<<<<<<< Updated upstream
     <a href="contact.html">Search</a>
     <a href="contact.html">Contact</a>
-=======
-    <a href="register.html">Register</a>
-    <a href="#">Search</a>
-    <a href="#">Contact Us</a>
->>>>>>> Stashed changes
+    <a href="register_form.php">Register</a>
+    <a href="login.php">Login</a>
     <a href="admin_login.html">Admin</a>
   </nav>
 

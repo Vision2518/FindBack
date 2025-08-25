@@ -155,7 +155,7 @@ aside button {
 }
 
 aside button:hover {
-  background-color: #555; /* lighter on hover */
+  zbackground-color: #555; /* lighter on hover */
   color: #ffd700; /* optional gold highlight */
 }
 

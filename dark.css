@@ -1,0 +1,28 @@
+/* Add to your CSS */
+body.dark-mode {
+  background: #181818 !important;
+  color: #f4f4f4 !important;
+}
+body.dark-mode .container {
+  background: #232323 !important;
+  color: #f4f4f4 !important;
+}
+body.dark-mode .btn {
+  background: #444 !important;
+  color: #fff !important;
+}
+body.dark-mode .btn-danger {
+  background: #c0392b !important;
+}
+body.dark-mode .badge.admin {
+  background: #b71c1c !important;
+}
+body.dark-mode .badge.moderator {
+  background: #1b5e20 !important;
+}
+body.dark-mode .badge.user {
+  background: #0d47a1 !important;
+}
+body.dark-mode .delete-link {
+  color: #ff7675 !important;
+}
